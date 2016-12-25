@@ -28,7 +28,7 @@ function NarrowItDownController(MenuSearchService) {
       console.log(itemIndex);
       MenuSearchService.removeItem(itemIndex);
   };
-}
+};
 
 MenuSearchService.$inject = ['$http'];
 function MenuSearchService($http){
