@@ -1,28 +1,30 @@
 <!doctype html>
 <html lang="en" ng-app="NarrowItDownApp">
-  <head>
+
+<head>
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
-  </head>
+</head>
+
 <body>
-   <div class="container" ng-controller='NarrowItDownController as nwctrl'>
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
+    <div class="container" ng-controller="NarrowItDownController as list">
+        <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control" ng-model="nwctrl.searchTerm">
+        <div class="form-group">
+            <input type="text" ng-model="list.searchTerm" placeholder="search term" class="form-control">
+        </div>
+        <div class="form-group narrow-button">
+            <button class="btn btn-primary" ng-click="list.search();">Narrow It Down For Me!</button>
+        </div><br/><br/><br/>
+        <div class="form-group">
+            <found-items items="list.found" on-remove="list.removeItem(index);"></found-items>
+        </div>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="nwctrl.search()">Narrow It Down For Me!</button>
-    </div>
-
-    <!-- found-items should be implemented as a component -->
-    <div class="form-group">
-      <found-items found-items="nwctrl.found" on-remove="nwctrl.removeItem(index)"></found-items>
-    </div>
-  </div>
-  <script src="angular.min.js"></script>
-  <script src="app.js"></script>
+    <script src="script/angular.min.js"></script>
+    <script src="script/app.js"></script>
 </body>
+
 </html>
