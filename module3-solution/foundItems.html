@@ -1,11 +1,16 @@
-<table ng-if="NarrowItDown.found.length != 0">
-<tr ng-repeat="item in NarrowItDown.found">
-  <td>
-      - {{ item.name }}, {{ item.short_name }}, {{ item.description }}
-  </td>
-  <td>
-      <button ng-click="NarrowItDown.remove($index)">Don't want this one!</button>
-  </td>
-</tr>
-</table>
-<div class="error" ng-if="NarrowItDown.found.length == 0">Nothing found!</div>
+
+
+
+<ul class="list-group" ng-repeat="item in ctrl.items">
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading"><mark>{{ item.name }}</mark></h1>
+          <br />
+        <p class="list-group-item-text">
+        {{ item.description }}
+        </p>
+        <br />
+        <button ng-click="ctrl.onRemove({index: $index});" type="button" class="btn btn-secondary">Don't want this one!</button>
+
+    </li>
+
+</ul>
