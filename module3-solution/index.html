@@ -4,8 +4,6 @@
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <script src="angular.min.js"></script>
-    <script src="app.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
   </head>
 <body>
@@ -19,10 +17,10 @@
       <button ng-click="ctrl.searchItems(ctrl.searchTerm)" class="btn btn-primary">Narrow It Down For Me!</button>
     </div>
     <br/>
-      <found-items items="ctrl.found" on-remove="ctrl.removeItem(index)">
-      </found-items>
-      <h1 class="bg-danger ng-binding ng-scope" ng-if="ctrl.found.length == 0">Nothing found</h1>
+      <found-items items="ctrl.found" on-remove="ctrl.removeItem(index)"></found-items>
+      <h2 class="bg-danger ng-binding ng-scope" ng-if="ctrl.found.length == 0">Nothing found</h2>
   </div>
-
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

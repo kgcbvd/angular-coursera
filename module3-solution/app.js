@@ -4,10 +4,8 @@
   angular.module('NarrowItDownApp',[])
   .controller('NarrowItDownController', NarrowItDownController)
   .service('MenuSearchService', MenuSearchService)
-  .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
   .directive('foundItems',FoundItems);
 
-  //
    function FoundItems(){
       var ddo = {
         templateUrl: 'foundItems.html',
@@ -41,38 +39,26 @@
     ctrl.removeItem = function (itemIndex) {
       ctrl.found.splice(itemIndex, 1);
     };
-
-
   }
-  //end Controller NarrowItDownController
 
-  MenuSearchService.$inject = ['$http', 'ApiBasePath'];
-  function MenuSearchService($http, ApiBasePath) {
+  MenuSearchService.$inject = ['$http'];
+  function MenuSearchService($http) {
     var service = this;
 
     service.getMatchedMenuItems = function (searchTerm) {
-      //console.log("searchTerm"+searchTerm);
-      return $http({method: "GET",url: (ApiBasePath + "/menu_items.json")}
+      return $http({method: "GET",url: ("https://davids-restaurant.herokuapp.com/menu_items.json")}
       ).then(function (result) {
 
         var foundItems = new Array();
         for ( var i = 0 ; i <  result.data.menu_items.length ; i++){
           result.data.menu_items[i].description
           if ( result.data.menu_items[i].description.indexOf(searchTerm) !== -1) {
-          //  console.log("found" + searchTerm );
             foundItems.push(result.data.menu_items[i])
           }
         }
-        // process result and only keep items that match
-        //console.log("foundItemsArray: ");
-        //console.log(foundItems);
-        // return processed items
         return foundItems;
       });
     };
-    // end
-
   }
-  //end service MenuSearchService
 
 })();
