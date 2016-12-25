@@ -1,8 +1,20 @@
-<h1>Result</h1>
-<div ng-if="list.isEmpty()">Nothing found</div>
-<ul>
-  <li ng-repeat="item in list.found">
-    {{item.name}}, {{item.short_name}}, {{item.description}}
-    <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
-  </li>
-</ul>
+<div class="row">
+    <div class="col-sm-6">
+      <div class="alert alert-dismissible alert-success " ng-if="items !=0 ">Total search results: <b>{{ items.length }}</b></div>
+      <div class="alert alert-dismissible alert-warning " ng-if="items === 0 "><b>Nothing found.</b></div>
+        <div class="list-group">
+            <div ng-repeat="item in items" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3 class="list-group-item-heading">{{ item.name }}</h3>
+                        <span><b>Short Name:</b> {{ item.short_name }}</span>
+                        <p class="" list-group-item-text "><b>description: </b>{{ item.description }}</p>
+                    </div>
+                  <div class="col-sm-4 ">
+                    <button class="btn btn-primary " ng-click="onRemove({index: $index}); ">Don't want this one!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>
+</div>
