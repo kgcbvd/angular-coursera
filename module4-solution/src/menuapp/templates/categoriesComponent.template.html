@@ -1,0 +1,5 @@
+<ul class="list-group col-md-6 col-md-offset-3">
+  <li ng-repeat="item in $ctrl.allCategories" ui-sref="categoryItems({itemId: item.short_name})" class="list-group-item">
+    {{item.name}}
+  </li>
+</ul>
